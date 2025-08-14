@@ -1,0 +1,15 @@
+{
+  "title.brands": "Брендови на гитари",
+  "title.models": "Модели",
+  "title.details": "Детали за гитара",
+  "search.placeholder": "Пребарај модели…",
+  "filter.type": "Тип",
+  "type.all": "Сите",
+  "pagination.loadMore": "Вчитај повеќе",
+  "tabs.specs": "Спецификации",
+  "tabs.musicians": "Музичари",
+  "musicians.none": "Нема наведени музичари.",
+  "footer.language": "Јазик",
+  "loading": "Ce вчитува…",
+  "error": "Настана грешка."
+}

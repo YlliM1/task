@@ -1,0 +1,15 @@
+{
+  "title.brands": "Guitar Brands",
+  "title.models": "Models",
+  "title.details": "Guitar Details",
+  "search.placeholder": "Search models…",
+  "filter.type": "Type",
+  "type.all": "All",
+  "pagination.loadMore": "Load more",
+  "tabs.specs": "Specs",
+  "tabs.musicians": "Musicians",
+  "musicians.none": "No musicians listed.",
+  "footer.language": "Language",
+  "loading": "Loading…",
+  "error": "Something went wrong."
+}

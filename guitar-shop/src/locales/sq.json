@@ -1,0 +1,15 @@
+{
+  "title.brands": "Markat e kitarave",
+  "title.models": "Modelet",
+  "title.details": "Detajet e kitarës",
+  "search.placeholder": "Kërko modelet…",
+  "filter.type": "Lloji",
+  "type.all": "Të gjitha",
+  "pagination.loadMore": "Ngarko më shumë",
+  "tabs.specs": "Specifikimet",
+  "tabs.musicians": "Muzikantët",
+  "musicians.none": "Nuk ka muzikantë të listuar.",
+  "footer.language": "Gjuha",
+  "loading": "Duke u ngarkuar…",
+  "error": "Diçka shkoi keq."
+}
