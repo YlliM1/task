@@ -6,6 +6,11 @@ import { Providers } from "./providers"; // Named import for Providers
 // Configure the Satoshi font
 const satoshi = localFont({
   src: [
+     {
+      path: "../../public/fonts/Satoshi-Light.woff2",
+      weight: "300",
+      style: "normal",
+    },
     {
       path: "../../public/fonts/Satoshi-Regular.woff2",
       weight: "400",
