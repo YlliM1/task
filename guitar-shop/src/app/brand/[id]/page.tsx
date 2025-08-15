@@ -32,7 +32,7 @@ export default function BrandModelsPage() {
   const [selectedType, setSelectedType] = useState("all");
   const [sortBy, setSortBy] = useState<SortBy>({ field: "name", order: "ASC" });
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 12;
+  const itemsPerPage = 6;
 
   // Debounce search
   useEffect(() => {
@@ -116,8 +116,10 @@ export default function BrandModelsPage() {
         <Image
           src="/images/orange-ball.png"
           alt="Decorative orange ball"
-          fill
+          width={672}
+          height={459}
           className="object-cover"
+          priority
         />
         {selectedBrand?.image && (
           <Image
@@ -126,16 +128,25 @@ export default function BrandModelsPage() {
             width={451}
             height={280}
             className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-40"
+            priority
           />
         )}
         <div className="absolute left-1/2 -translate-x-1/2 ml-[80px] -bottom-10 w-[80px] h-[80px]">
-          <Image src="/images/Ellipse5.png" alt="Ellipse" width={80} height={80} className="absolute top-0 left-0" />
+          <Image 
+            src="/images/Ellipse5.png" 
+            alt="Ellipse" 
+            width={80} 
+            height={80} 
+            className="absolute top-0 left-0"
+            priority
+          />
           <Image
             src="/images/Butterfly.png"
             alt="Butterfly"
             width={28}
             height={28}
             className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+            priority
           />
         </div>
       </div>
@@ -148,7 +159,14 @@ export default function BrandModelsPage() {
               onClick={() => router.back()}
               className="flex items-center hover:opacity-80 transition-opacity cursor-pointer gap-6 mt-[33px]"
             >
-              <Image src="/images/left.png" alt="Back" width={14} height={14} className="filter invert" />
+              <Image 
+                src="/images/left.png" 
+                alt="Back" 
+                width={14} 
+                height={14} 
+                className="filter invert"
+                priority
+              />
               <span className="font-normal text-[#3D3D46] text-[16px] font-[var(--font-circular)]">
                 Back to Home
               </span>
@@ -156,7 +174,13 @@ export default function BrandModelsPage() {
           </div>
 
           <div className="flex items-center w-[160px] h-[32px] gap-2 ml-[120px] height-[32px]">
-            <Image src="/images/Butterfly.png" alt="Butterfly" width={28} height={28} />
+            <Image 
+              src="/images/Butterfly.png" 
+              alt="Butterfly" 
+              width={28} 
+              height={28} 
+              priority
+            />
             <span className="text-black font-[var(--font-satoshi)] text-[24px] leading-[100%]">VibeStrings</span>
           </div>
 
@@ -187,7 +211,14 @@ export default function BrandModelsPage() {
             <div className="flex gap-4">
               {/* Filter */}
               <div className="relative w-[225px]">
-                <Image src="/images/filter.png" width={20} height={20} alt="Filter" className="absolute left-3 top-1/2 transform -translate-y-1/2" />
+                <Image 
+                  src="/images/filter.png" 
+                  width={20} 
+                  height={20} 
+                  alt="Filter" 
+                  className="absolute left-3 top-1/2 transform -translate-y-1/2"
+                  priority
+                />
                 <select
                   value={selectedType}
                   onChange={(e) => setSelectedType(e.target.value)}
@@ -216,7 +247,14 @@ export default function BrandModelsPage() {
                   onChange={(e) => setSearchTerm(e.target.value)}
                   className="w-[485px] p-3 pl-40 border border-gray-300 text-[#B8B8C0] focus:outline-none focus:ring-2 focus:ring-orange-500"
                 />
-                <Image src="/images/search.png" alt="Search" width={20} height={20} className="absolute left-3 top-3.5" />
+                <Image 
+                  src="/images/search.png" 
+                  alt="Search" 
+                  width={20} 
+                  height={20} 
+                  className="absolute left-3 top-3.5"
+                  priority
+                />
               </div>
             </div>
           </div>
@@ -227,12 +265,19 @@ export default function BrandModelsPage() {
               <Link
                 key={model.id}
                 href={`/brand/${id}/model/${model.id}`}
-                className=" rounded-lg overflow-hidden hover:shadow-lg transition-shadow duration-300"
+                className="rounded-lg overflow-hidden hover:shadow-lg transition-shadow duration-300"
               >
                 <div className="p-4">
-                  <div className="aspect-square relative  rounded-lg mb-4">
+                  <div className="aspect-square relative rounded-lg mb-4">
                     {model.image && (
-                      <Image src={model.image} alt={model.name} fill className="object-contain p-4" sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" />
+                      <Image 
+                        src={model.image} 
+                        alt={model.name} 
+                        fill 
+                        className="object-contain p-4" 
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                        priority
+                      />
                     )}
                   </div>
                   <h3 className="font-bold text-lg line-clamp-2 text-[16px]">{model.name}</h3>
@@ -241,35 +286,43 @@ export default function BrandModelsPage() {
               </Link>
             ))}
           </div>
-
-          {/* Pagination */}
-          {totalPages > 1 && (
-            <div className="flex justify-center items-center gap-2 mt-8">
-              <button
-                onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
-                disabled={currentPage === 1}
-                className="px-4 py-2 border rounded disabled:opacity-50 hover:bg-orange-500 hover:text-white transition-colors"
-              >
-                Previous
-              </button>
-              {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
-                <button
-                  key={page}
-                  onClick={() => setCurrentPage(page)}
-                  className={`px-4 py-2 border rounded ${currentPage === page ? "bg-orange-500 text-white" : "hover:bg-orange-500 hover:text-white"} transition-colors`}
-                >
-                  {page}
-                </button>
-              ))}
-              <button
-                onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages))}
-                disabled={currentPage === totalPages}
-                className="px-4 py-2 border rounded disabled:opacity-50 hover:bg-orange-500 hover:text-white transition-colors"
-              >
-                Next
-              </button>
-            </div>
-          )}
+          
+          {/* Pagination and Results Count */}
+<div className="flex flex-col md:flex-row justify-between items-center mt-8 gap-4">
+  {/* Results count - left aligned */}
+  <div className="text-[#666666] text-sm md:text-base text-bold">
+    Showing <span className="text-black text-bold">{currentModels.length}</span> results from <span className="text-black text-bold">{sortedModels.length}</span>
+  </div>
+  
+  {/* Pagination - centered on mobile, right on desktop */}
+  {totalPages > 1 && (
+    <div className="flex justify-center items-center gap-2">
+      <button
+        onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
+        disabled={currentPage === 1}
+        className="px-4 py-2 border rounded disabled:opacity-50 text-[#666666] hover:text-orange-500 transition-colors"
+      >
+        <Image src="/images/left.png" alt="Left Arrow" height={20} width={20} />
+      </button>
+      {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
+        <button
+          key={page}
+          onClick={() => setCurrentPage(page)}
+          className={`px-4 py-2 border rounded text-[#666666] ${currentPage === page ? "text-orange-500" : "hover:text-orange-500"} transition-colors`}
+        >
+          {page}
+        </button>
+      ))}
+      <button
+        onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages))}
+        disabled={currentPage === totalPages}
+        className="px-4 py-2 border rounded disabled:opacity-50 text-[#666666] hover:text-orange-500 transition-colors"
+      >
+        <Image src="/images/left.png" alt="Left Arrow" height={20} width={20} className="-scale-x-100" />
+      </button>
+    </div>
+  )}
+</div>
 
           {/* Empty State */}
           {sortedModels.length === 0 && !loading && (
@@ -287,6 +340,77 @@ export default function BrandModelsPage() {
           )}
         </section>
       </div>
+      <footer className="bg-gray-100 px-8 py-16 text-black font-[var(--font-satoshi)] font-normal align-center">
+  <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-22  ">
+    {/* Column 1 - Logo and Contact */}
+    <div className="flex flex-col space-y-6">
+      <div className="flex items-center gap-2 w-[263px] h-[54px]">
+        <Image
+          src="/images/Butterfly.png"
+          alt="VibeStrings Logo"
+          width={28}
+          height={28}
+        />
+        <span className="text-black font-[var(--font-satoshi)] font-normal text-[30px]">
+          VibeStrings
+        </span>
+      </div>
+
+      <div className="flex items-center gap-3">
+        <Image 
+          src="/images/sms.png" 
+          alt="Email" 
+          width={24} 
+          height={24}
+        />
+        <span className="text-[#666666] text-[16px] w-[181px]">Enquiry@VibeStrings.com</span>
+      </div>
+      
+      <div className="flex items-start gap-3">
+        <Image 
+          src="/images/location.png" 
+          alt="Location" 
+          width={24} 
+          height={24}
+        />
+        <span className="text-[#666666] text-[16px]">San Francisco</span>
+      </div>
+      
+      
+    </div>
+
+    {/* Column 2 - Pages */}
+    <div>
+      <h3 className="text-black font-[var(--font-satoshi)] font-bold font-[18px] mb-4">PAGES</h3>
+      <ul className="space-y-3">
+        <li><Link href="/#" className="hover:text-orange-500 text-[16px] text-[#666666] font-[var(--font-satoshi)] font-normal"> Store</Link></li>
+        <li><Link href="/#" className="hover:text-orange-500 text-[16px] text-[#666666] font-[var(--font-satoshi)] font-normal">Collections</Link></li>
+        <li><Link href="/#" className="hover:text-orange-500  text-[16px] text-[#666666] font-[var(--font-satoshi)] font-normal">Support</Link></li>
+      </ul>
+    </div>
+
+    {/* Column 3 - Products */}
+    <div>
+      <h3 className="text-black font-[var(--font-satoshi)] font-bold font-[18px] mb-4">PRODUCT</h3>
+      <ul className="space-y-3">
+        <li><Link href="/electric" className="hover:text-orange-500 text-[16px] text-[#666666] font-[var(--font-satoshi)] font-normal">Terms</Link></li>
+        <li><Link href="/acoustic" className="hover:text-orange-500 text-[16px] text-[#666666] font-[var(--font-satoshi)] font-normal">Privacy Policy</Link></li>
+        <li><Link href="/accessories" className="hover:text-orange-500 text-[16px] text-[#666666] font-[var(--font-satoshi)] font-normal">Copyright</Link></li>
+      </ul>
+    </div>
+
+    {/* Column 4 - Social Media */}
+    <div>
+      <h3 className="text-black font-[var(--font-satoshi)] font-bold text-lg mb-4">FOLLOW US</h3>
+      <div className="flex gap-8 mb-6 cursor-pointer">
+        <Image src="/images/Facebook.png" alt="Facebook" width={32} height={33} />
+        <Image src="/images/Instagram.png" alt="Instagram" width={32} height={33} />
+        <Image src="/images/Twitter.png" alt="Twitter" width={32} height={33} />
+      </div>
+    </div>
+  </div>
+   <p className="text-[16px] text-[#666666] flex justify-center mt-[80px]">© 2022 Copyright.VibeStrings</p>
+</footer>
     </main>
   );
 }
