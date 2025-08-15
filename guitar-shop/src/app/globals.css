@@ -2,33 +2,35 @@
 
 /* Tailwind import */
 @import "tailwindcss";
+@import url('https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&display=swap');
 
-/* Font-face for Satoshi */
+/* Local font-face fallbacks */
 @font-face {
   font-family: 'Satoshi';
   src: url('/fonts/Satoshi-Regular.woff2') format('woff2');
   font-weight: 400;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'Satoshi';
-  src: url('/fonts/Satoshi-Bold.woff2') format('woff2');
-  font-weight: 700;
-  font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
   font-family: 'Satoshi';
   src: url('/fonts/Satoshi-Medium.woff2') format('woff2');
   font-weight: 500;
-  font-style: normal;
+  font-display: swap;
 }
 
-/* CSS variable for Tailwind / inline use */
+@font-face {
+  font-family: 'Satoshi';
+  src: url('/fonts/Satoshi-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-display: swap;
+}
+
+/* CSS variables */
 :root {
   --font-satoshi: 'Satoshi', sans-serif;
   --background: #ffffff;
+  --font-circular: 'Circular Std', sans-serif;
   --foreground: #171717;
 }
 

@@ -1,6 +1,5 @@
 import { gql } from "@apollo/client";
 
-// Page 1 – All brands
 export const GET_BRANDS = gql`
   query GetBrands {
     findAllBrands {
@@ -13,9 +12,9 @@ export const GET_BRANDS = gql`
   }
 `;
 
-export const DEBUG_QUERY = gql`query Debug { __typename }`;
-
-// Page 2 – Models by brand (sortable)
+/* IMPORTANT: the server's enum type is named `sortBy` (lowercase) — not `SortBy`.
+   Use `$sortBy: sortBy!` and send "name" or "price" (lowercase) as the variable value.
+*/
 export const GET_BRAND_MODELS = gql`
   query GetBrandModels($id: ID!, $sortBy: sortBy!) {
     findBrandModels(id: $id, sortBy: $sortBy) {
@@ -28,7 +27,6 @@ export const GET_BRAND_MODELS = gql`
   }
 `;
 
-// Page 2 – Search models
 export const SEARCH_MODELS = gql`
   query SearchModels($brandId: String!, $name: String!) {
     searchModels(brandId: $brandId, name: $name) {
@@ -41,7 +39,6 @@ export const SEARCH_MODELS = gql`
   }
 `;
 
-// Page 3 – Model details
 export const GET_MODEL_DETAILS = gql`
   query GetModelDetails($brandId: ID!, $modelId: ID!) {
     findUniqueModel(brandId: $brandId, modelId: $modelId) {

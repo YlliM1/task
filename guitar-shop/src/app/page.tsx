@@ -18,9 +18,12 @@ export default function HomePage() {
    console.log('Query state:', { loading, error, data: data?.findAllBrands })
 
 
-    if (loading) {
-    return <p className="text-center py-10">Loading...</p>;
-  }
+    if (loading) return (
+  <div className="min-h-screen bg-white flex flex-col items-center justify-center">
+    <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-orange-500 mb-4"></div>
+    <p className="text-gray-600">Loading guitars...</p>
+  </div>
+);
 
   if (error) {
     return (
@@ -32,7 +35,7 @@ export default function HomePage() {
 
 
   return (
-    <main className="font-sans">
+    <main className="font-satoshi">
       {/* Hero */}
     <section className="flex flex-col md:flex-row justify-between bg-white pb-[100px]">
   {/* Left side: Logo + Text */}
@@ -46,7 +49,7 @@ export default function HomePage() {
           width={28}
           height={28}
         />
-        <span className="text-black font-[var(--font-satoshi)] font-normal text-[24px] leading-[100%]">
+        <span className="text-black font-normal text-[24px] leading-[100%]">
           VibeStrings
         </span>
       </div>
@@ -96,7 +99,7 @@ export default function HomePage() {
       {/* Brand Logos */}
      {/* Brand Logos */}
 <section className="bg-white px-8 py-12 text-center text-black pb-[240px]">
-  <h2 className="text-xl text-[44px] text-black font-[var(--font-satoshi)] font-bold">
+  <h2 className="text-xl text-[44px] text-black font-[var(--font-satoshi)] ">
     Featuring the <span className="text-orange-500">Best Brands</span>
   </h2>
   <p className="text-[#666666] mt-2">
